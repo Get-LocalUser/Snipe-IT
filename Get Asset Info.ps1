@@ -1,6 +1,10 @@
 $AssetTag = Read-Host "Enter the Asset Tag"
 
-$result = Get-SnipeitAsset -asset_tag $AssetTag
+$result = Get-SnipeitAsset -asset_tag $AssetTag -ErrorAction SilentlyContinue
+if ($null -eq $result) {
+    Write-Host "Asset Tag doesn't exist, try again" -ForegroundColor Yellow
+    return
+}
 
 [PSCustomObject]@{
     "Asset Tag"     = $result.asset_tag
