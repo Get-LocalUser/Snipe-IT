@@ -2,7 +2,7 @@ $AssetTag = Read-Host "Enter the Asset Tag"
 
 $result = Get-SnipeitAsset -asset_tag $AssetTag -ErrorAction SilentlyContinue
 if ($null -eq $result) {
-    Write-Host "Asset Tag doesn't exist, try again" -ForegroundColor Yellow
+    Write-Host "$AssetTag doesn't exist, try again" -ForegroundColor Yellow
     return
 }
 
