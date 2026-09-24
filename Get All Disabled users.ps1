@@ -94,24 +94,24 @@ do {
 
         # Get and display accessories assigned to the selected user
         $useraccessories = Get-SnipeitAccessory -user_id $selectedUser.'Snipe ID'
-
-        $useraccessories |
-            Group-Object -Property Name |
-            ForEach-Object {
-                [PSCustomObject]@{
-                    Quantity            = $_.Count
-                    "Accessory Item(s)" = $_.Name
-                }
-            }
     }
 
     $userdevices | Format-Table -AutoSize
-    $useraccessories | Format-Table -AutoSize
+
+    $useraccessories |
+    Group-Object -Property Name |
+    ForEach-Object {
+        [PSCustomObject]@{
+            Quantity            = $_.Count
+            "Accessory Item(s)" = $_.Name
+        }
+    } | Format-Table -AutoSize
+    
 
     $note = Read-Host "Enter notes for user (leave blank to skip)"
 
     if ($note) {
-        Set-SnipeitUser -id $selectedUser.'Snipe ID' -notes $note
+        Set-SnipeitUser -id $selectedUser.'Snipe ID' -notes $note -Confirm
     }
 
     $Check = Read-Host "Check another user? [Y/N]"
