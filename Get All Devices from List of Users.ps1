@@ -1,7 +1,13 @@
-$users = Get-Content -Path "$env:USERPROFILE\Downloads\New Text Document.txt"
+Write-Host "UPN's should be what's in the file. Not usernames" -ForegroundColor Yellow
+
+$usersFile = Read-Host "Enter path of user file"
+$users = Get-Content -Path $usersFile
+
 $assets = Get-SnipeitAsset -all
 
 $results = foreach ($user in $users) {
+
+    $user = $user.Trim()
 
     $userAssets = $assets | Where-Object {
         $_.assigned_to.username -eq $user
@@ -24,4 +30,11 @@ $results = foreach ($user in $users) {
     }
 }
 
-$results | Export-Csv -Path "C:\Temp\assets.csv" -NoTypeInformation
+$results | Export-Csv -Path "C:\Temp\userassets.csv" -NoTypeInformation
+
+if ($?) {
+    Write-Host "Results exported to C:\Temp\userassets.csv" -ForegroundColor Yellow
+}
+else {
+    Write-Host "Export failed" -ForegroundColor Red
+}

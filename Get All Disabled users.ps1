@@ -128,7 +128,8 @@ do {
             $date = $date.ToShortDateString()
 
             $managerFirstName = ($selectedUser.Manager -split ',')[1].Trim()
-            
+            Write-Host "============== Start of EMail ==============" -ForegroundColor Yellow
+
             $email = @"
 Hi $($managerFirstName),
 
@@ -153,6 +154,8 @@ Please let me know if you have any questions.
             }
         } | Format-Table -AutoSize
 
+        Write-Host "============== End of EMail ==============" -ForegroundColor Yellow
+        
         $validEmailChoice = $true
     }
     elseif ($emailquestion -in @("N", "n")) {

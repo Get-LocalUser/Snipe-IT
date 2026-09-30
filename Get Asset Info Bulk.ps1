@@ -1,5 +1,5 @@
-# Get list of assets by Asset Tag
-$assets = Get-Content -Path "$env:USERPROFILE\Downloads\New Text Document.txt"
+$assetFile = Read-Host "Enter path of file"
+$assets = Get-Content -Path $assetFile
 
 $results = foreach ($asset in $assets) {
     $result = Get-SnipeitAsset -asset_tag $asset
@@ -21,7 +21,5 @@ $results = foreach ($asset in $assets) {
 
 $results | Export-Csv -Path "C:\temp\assetinfobulk.csv" -NoTypeInformation
 if ($?) {
-    Write-Host "Results exported to C:\temp\assetinfobulk.csv" -ForegroundColor Yellow
-} else {
-    Write-Host "Export failed AHHHHH" -ForegroundColor Red
+    Write-Host "Results exported to 'C:\temp\assetinfobulk.csv'" -ForegroundColor Yellow
 }
