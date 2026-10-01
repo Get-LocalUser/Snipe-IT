@@ -104,14 +104,17 @@ do {
         }
     } | Format-Table -AutoSize
 
+    <#
     $note = Read-Host "Enter notes for user (leave blank to skip)"
 
     if ($note) {
         Set-SnipeitUser -id $selectedUser.'Snipe ID' -notes $note -Confirm
     }
+    #>
 
     do {
         $emailquestion = Read-Host "Write email? [Y/N]"
+        Write-Host ""
 
         if ($emailquestion -in @("Y", "y")) {
         
@@ -134,6 +137,7 @@ do {
 Hi $($managerFirstName),
 
 I'm reaching out regarding $($selectedUser.Name) who was recently terminated. According to our records, $($selectedUser.Name) has the IT equipment listed below that needs to be returned to the IT HelpDesk at OPS.
+
 You may return the items via interoffice mail or drop them off at the HelpDesk. Please return the items within business 5 days as per the Departing Employee Procedures Policy no later than $date.
 
 Please let me know if you have any questions.
@@ -165,6 +169,12 @@ Please let me know if you have any questions.
     else {
         Write-Host "Invalid option. Please enter Y or N." -ForegroundColor Red
         $validEmailChoice = $false
+    }
+
+    $note = Read-Host "Enter notes for user (leave blank to skip)"
+
+    if ($note) {
+        Set-SnipeitUser -id $selectedUser.'Snipe ID' -notes $note -Confirm | Out-Null
     }
 
 } while (-not $validEmailChoice)

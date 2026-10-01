@@ -105,17 +105,7 @@ function Get-SnipeAssetInfo {
         "Location"      = $result.location.name
         "Assigned To"   = $result.assigned_to.name
         "Email"         = $result.assigned_to.username
-        "Condition"     = if ([string]::IsNullOrWhiteSpace($result.custom_fields.'Asset Condition (Use only when Surplusing)'.value)) {
-            "N/A"
-        }
-        else {
-            $result.custom_fields.'Asset Condition (Use only when Surplusing)'.value
-        }
-        "Working?"      = if ([string]::IsNullOrWhiteSpace($result.custom_fields.'Working? (Use only when Surplusing)'.value)) {
-            "N/A"
-        }
-        else {
-            $result.custom_fields.'Working? (Use only when Surplusing)'.value
-        }
+        "Condition"     = if ([string]::IsNullOrWhiteSpace($result.custom_fields.'Asset Condition (Use only when Surplusing)'.value)) { "N/A" } else { $result.custom_fields.'Asset Condition (Use only when Surplusing)'.value }
+        "Working?"      = if ([string]::IsNullOrWhiteSpace($result.custom_fields.'Working? (Use only when Surplusing)'.value)) { "N/A" } else { $result.custom_fields.'Working? (Use only when Surplusing)'.value }
     }
 }
