@@ -42,7 +42,7 @@ $results = foreach ($asset in $assets) {
 
     }
     catch {
-        Write-Host "Failed to update asset $assetid`: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "Failed to update $asset`: $($_.Exception.Message)" -ForegroundColor Red
     }
 
 }
