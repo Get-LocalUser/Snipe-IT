@@ -34,11 +34,11 @@ $results = foreach ($asset in $assets) {
         $setinfo = Set-SnipeitAsset `
             -id $assetid `
             -status_id 12 `
-            -rtd_location_id $null `
+            -rtd_location_id $null ` # updates both Default Location and Location
             -notes $notes `
             -ErrorAction Continue
 
-        Write-Host "Successfully updated asset $asset" -ForegroundColor Green
+        Write-Host "Successfully updated $asset" -ForegroundColor Green
 
     }
     catch {
