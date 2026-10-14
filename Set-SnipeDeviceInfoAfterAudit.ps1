@@ -1,3 +1,7 @@
+# Final Surplus location = 495
+# Fial surplus status = 9
+
+
 $notes = Read-Host "Enter in what you want for the Notes on each device"
 
 Add-Type -AssemblyName System.Windows.Forms

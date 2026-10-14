@@ -92,6 +92,10 @@ function Get-SnipeAssetInfo {
     $result = Get-SnipeitAsset -asset_tag $AssetTag -ErrorAction SilentlyContinue
 
     if ($null -eq $result) {
+        $result = Get-SnipeitAsset -serial $AssetTag -ErrorAction SilentlyContinue
+    }
+
+    if ($null -eq $result) {
         return $null
     }
 
