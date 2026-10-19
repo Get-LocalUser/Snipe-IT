@@ -2,6 +2,24 @@
 # Fial surplus status = 9
 
 
+
+<#
+ID	Status Name
+1	Pending
+2	Ready to Deploy
+3	Archived
+4	Deployed
+5	Out for Repair
+6	Legal Hold
+7	Stage 1 Surplus
+8	Stage 2 Surplus
+9	Final Surplus
+12	Lost
+15	BYOD
+88	Sealed/New
+#>
+
+
 $notes = Read-Host "Enter in what you want for the Notes on each device"
 
 Add-Type -AssemblyName System.Windows.Forms
