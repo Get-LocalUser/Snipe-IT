@@ -98,6 +98,7 @@ function Get-SnipeAssetInfo {
     }
 
     if ($null -eq $result) {
+        Write-Host "$AssetTag not found." -ForegroundColor Yellow
         return $null
     }
 
