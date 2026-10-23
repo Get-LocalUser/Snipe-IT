@@ -49,8 +49,8 @@ function Get-SnipeAssetInfo {
                 [PSCustomObject]@{
                     "Asset Tag"     = $asset
                     "Serial"        = "NOT FOUND"
-                    "IMEI"          = $asset.custom_fields.IMEI.value
-                    "IMEI 2"        = $asset.custom_fields."IMEI 2".value
+                    "IMEI"          = ""
+                    "IMEI 2"        = ""
                     "Model"         = ""
                     "Category"      = ""
                     "Manufacturer"  = ""
