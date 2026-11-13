@@ -53,15 +53,8 @@ $results = foreach ($asset in $assets) {
     $assetid = [int]$assetid.id
 
     try {
-        $setinfo = Set-SnipeitAsset `
-            -id $assetid `
-            -status_id 12 `
-            -rtd_location_id $null ` # updates both Default Location and Location
-            -notes $notes `
-            -ErrorAction Continue
-
+        $setinfo = Set-SnipeitAsset -id $assetid -notes $notes -ErrorAction Continue #-status_id 12 #-rtd_location_id $null
         Write-Host "Successfully updated $asset" -ForegroundColor Green
-
     }
     catch {
         Write-Host "Failed to update $asset`: $($_.Exception.Message)" -ForegroundColor Red
